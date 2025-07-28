@@ -106,7 +106,7 @@ for i=1:1:length(ductStruct)
 
 
    if(flag_generatePlot==1)
-       figH = plotDuctSolution(i,ductStruct, ductParams,...
+       figH = plotDuctSolution(i,ductStruct(i), ductParams,...
                 ductStruct(i).useFrictionApproximation,outputFolder,usingOctave);
        close(figH);
    end
