@@ -1,4 +1,4 @@
-function soln = evaluatePressureLoss(d,mdot,rho,L,nu,k)
+function soln = evaluatePressureLoss(d,mdot,rho,L,nu,k,useFrictionApproximation)
 
 % 1. Given mdot guess, evaluate f
 % 2. Iterate over mdot equation until the change in mdot is small
@@ -14,7 +14,7 @@ for i=1:1:2
     soln.mdot_guess=mdot;
     soln.v = (mdot/rho)/soln.A;
     soln.Re = soln.v*d / nu;
-    soln.f = evaluateFrictionFactor(d,k,soln.Re);
+    soln.f = evaluateFrictionFactor(d,k,soln.Re,useFrictionApproximation);
     soln.deltaP = (soln.f*L/d)*rho*(soln.v*soln.v)/2;
     
     mdotP = mdot;
