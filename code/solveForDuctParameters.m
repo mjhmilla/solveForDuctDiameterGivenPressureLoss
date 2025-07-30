@@ -68,7 +68,7 @@ disp(sprintf('\t%1.6f\tm^3\tarea',      soln.A));
 disp(sprintf('\t%1.6f\tm/2\tvelocity',  soln.v));
 disp(sprintf('\t%1.6f\t\tRe',           soln.Re));
 disp(sprintf('\t%1.6f\t\tfriction factor',soln.f));
-disp(sprintf('\t%1.3f m\thydraulic diameter',dBest));
+disp(sprintf('\t%1.3f\t\tm\thydraulic diameter',dBest));
 
 
 if(appendToFile==1)

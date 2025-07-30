@@ -18,6 +18,21 @@ for i=1:1:2
     soln.deltaP = (soln.f*L/d)*rho*(soln.v*soln.v)/2;
     
     mdotP = mdot;
-    soln.mdot = soln.A * sqrt(soln.deltaP * 2 * rho)/(soln.f *L/ d);
+    soln.mdot = soln.A * sqrt( (soln.deltaP * 2 * rho)/(soln.f *L/ d) );
     soln.mdot_error = abs(mdot-mdotP);
 end
+
+%mdot:      m(d,p,f,[L,rho])    soln.A * sqrt(soln.deltaP * 2 * rho)/(soln.f *L/ d)
+%v          v(d,mdot,[rho])
+%delta P:   p(d,v,f,[L,rho]) (soln.f*L/d)*rho*(soln.v*soln.v)/2
+%Re        re(d,v,[nu])
+%f:         f(d,k,Re)
+
+%v          v(d,p,f,[L,rho])
+%delta P:   p(d,v,f,[L,rho]) (soln.f*L/d)*rho*(soln.v*soln.v)/2
+%f:         f(d,k,v,[nu])
+
+%constraint on delta P
+%constraint on mdot (v)
+%
+% d is our only variable

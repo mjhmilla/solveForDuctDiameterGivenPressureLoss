@@ -1,6 +1,6 @@
 function f = evaluateFrictionFactor(d,k,Re, useApproximation)
 
-f = 0.0055*(1+ ((2000*k/d) + (1e6/Re))^(1/3));
+f = 0.0055*(1+ ((20000*k/d) + (1e6/Re))^(1/3));
 
 if(useApproximation==0)
     
@@ -11,9 +11,10 @@ if(useApproximation==0)
     
     while abs(g)>1e-12 && i < 100
     
-        g = -0.5/sqrt(f) - log( (k/(3.7*d)) + (2.51/(Re*sqrt(f))));
+        %Eqn 79 in Duct_equations.pdf from COMIS Funadmentals
+        g = -0.5/sqrt(f) - log( (k/(3.75*d)) + (2.51/(Re*sqrt(f))));
         dg_df = 0.25/(f*sqrt(f)) ...
-            + 1.255/( log(10)*Re*(f*sqrt(f))*( (k/(3.7*d)) + (2.51/(Re*sqrt(f))))  );
+            + 1.255/( log(10)*Re*(f*sqrt(f))*( (k/(3.75*d)) + (2.51/(Re*sqrt(f))))  );
     
         df = -g/dg_df;
         fp = f;

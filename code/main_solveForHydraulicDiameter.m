@@ -17,7 +17,7 @@ rootDir  = rootDir(1,1:(i0(1,(end))-1));
 
 %Beware: Octave seems to crash windows when plotting.
 usingOctave       = 0;
-flag_generatePlot = 1;
+flag_generatePlot = 0;
 
 useFrictionApproximation=1;
 maxIterations =100;
@@ -70,8 +70,6 @@ ductStruct(idx).dmin         = 0.1;
 ductStruct(idx).dmax         = 0.3;
 ductStruct(idx).useFrictionApproximation=1;
 
-
-
 %%
 % Process all ducts
 %%
@@ -95,15 +93,6 @@ for i=1:1:length(ductStruct)
                 fileName, ...
                 appendToFile);
   appendToFile=1;
-
-  disp(sprintf('%1.3e\t%s',ductParams.d,'d'));
-
-  disp('Checking alternative mdot formula');
-
-  disp(sprintf('%1.3e\t%s',ductParams.mdot,'mdot'));
-  disp(sprintf('%1.3e\t%s',ductParams.mdot_guess,'mdot_guess'));
-  disp(sprintf('%1.3e\t%s',ductParams.mdot_error,'mdot error'));
-
 
    if(flag_generatePlot==1)
        figH = plotDuctSolution(i,ductStruct(i), ductParams,...
