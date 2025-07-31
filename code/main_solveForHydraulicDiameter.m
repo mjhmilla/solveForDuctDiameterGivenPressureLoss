@@ -29,7 +29,23 @@ numericalTolerance = 1e-12;
 outputFolder  = fullfile(rootDir,'output');
 fileName      = fullfile(outputFolder, 'ductSolutionLog.txt');
 
+%%
+% Numerically test the friction factor code using this online calculator
+%  https://www.engineeringtoolbox.com/colebrook-equation-d_1031.html
+%%
+d  = 0.315;
+k = 0.00015;
+Re= 125000;
+ftest=0.0197;
 
+f       = evaluateFrictionFactor(d,k,Re,0);
+fapprox = evaluateFrictionFactor(d,k,Re,1);
+
+assert(abs(f-ftest)<1e-4,...
+    'Error: friction factor calculation did not match online calculator');
+assert(abs(f-fapprox)/f < 0.05,...
+    'Error: friction factor approximation error exceeded 5%');
+here=1;
 %%
 % Enter duct data
 %%

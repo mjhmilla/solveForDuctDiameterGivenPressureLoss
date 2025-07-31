@@ -9,10 +9,12 @@ if(useApproximation==0)
     g = 0.1;
     i=0;
     
+
+
     while abs(g)>1e-12 && i < 100
     
         %Eqn 79 in Duct_equations.pdf from COMIS Funadmentals
-        g = -0.5/sqrt(f) - log( (k/(3.75*d)) + (2.51/(Re*sqrt(f))));
+        g = -0.5/sqrt(f) - log10( (k/(3.75*d)) + (2.51/(Re*sqrt(f))));
         dg_df = 0.25/(f*sqrt(f)) ...
             + 1.255/( log(10)*Re*(f*sqrt(f))*( (k/(3.75*d)) + (2.51/(Re*sqrt(f))))  );
     
@@ -31,8 +33,9 @@ if(useApproximation==0)
     
         i=i+1;
     
-    end
-    
+    end    
+
     assert(abs(g)<=1e-12,'Error: failed to solve the root for the friction factor');
+
 
 end
